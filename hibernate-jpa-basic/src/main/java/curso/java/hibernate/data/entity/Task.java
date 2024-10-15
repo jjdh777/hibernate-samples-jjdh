@@ -19,13 +19,9 @@ public class Task implements Serializable {
     @Column
     private Integer employeeId;
 
-    public Integer getEmployeeId() {
-        return employeeId;
-    }
-
-    public void setEmployeeId(Integer employeeId) {
-        this.employeeId = employeeId;
-    }
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "scope_id")
+    private Scope scope_id;
 
     public Integer getId() {
         return id;
@@ -51,12 +47,30 @@ public class Task implements Serializable {
         this.taskDescription = taskDescription;
     }
 
+    public Integer getEmployeeId() {
+        return employeeId;
+    }
+
+    public void setEmployeeId(Integer employeeId) {
+        this.employeeId = employeeId;
+    }
+
+    public Scope getScope() {
+        return scope_id;
+    }
+
+    public void setScope(Scope scope_id) {
+        this.scope_id = scope_id;
+    }
+
     @Override
     public String toString() {
         return "Task{" +
                 "id=" + id +
                 ", taskName='" + taskName + '\'' +
                 ", taskDescription='" + taskDescription + '\'' +
+                ", employeeId=" + employeeId +
+                ", scope_id=" + scope_id +
                 '}';
     }
 }
