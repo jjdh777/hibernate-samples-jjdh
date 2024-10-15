@@ -45,6 +45,7 @@ public class HibernateExampleApp implements CommandLineRunner {
     emp.ifPresent(employee -> logger.info("Employee id 2 -> {}", emp.get()));
 
     repository.findAll().forEach(System.out::println);
+
   }
 
   private Set<Task> getTasks() {
